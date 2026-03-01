@@ -220,34 +220,49 @@
   </div>
 
   <script>
-    function runSearch() {
-      const query = document.getElementById("searchInput").value;
-      const frame = document.getElementById("searchFrame");
+// Hide the original page when loaded inside the cloaked iframe
+if (window.location.search.includes("cloak=1")) {
+    document.body.style.display = "none";
+}
 
-      if (query.trim() === "") return;
+// Utopia-style search
+function runSearch() {
+  const query = document.getElementById("searchInput").value;
+  const frame = document.getElementById("searchFrame");
 
-      frame.style.display = "block";
+  if (query.trim() === "") return;
 
-      // Utopia's actual search engine endpoint (Chromebook-safe)
-      frame.src = "https://utopiaunblocker.com/search?q=" + encodeURIComponent(query);
-    }
+  frame.style.display = "block";
+  frame.src = "https://utopiaunblocker.com/search?q=" + encodeURIComponent(query);
+}
 
-    function launchBlank() {
+// GitHub Pages–compatible about:blank cloaker
+function launchBlank() {
   const win = window.open("about:blank", "_blank");
-  const url = location.href;
 
+  if (!win) {
+    alert("Popup blocked! Allow popups to use about:blank mode.");
+    return;
+  }
+
+  // Add ?cloak=1 safely whether or not a query string already exists
+  const url = window.location.href + (window.location.search ? "&" : "?") + "cloak=1";
+
+  // Prepare the blank tab
   win.document.body.style.margin = "0";
   win.document.body.style.height = "100vh";
 
+  // Create the iframe
   const iframe = win.document.createElement("iframe");
   iframe.style.border = "none";
   iframe.style.width = "100vw";
   iframe.style.height = "100vh";
-  iframe.src = url + "?cloak=1";
+  iframe.src = url;
 
   win.document.body.appendChild(iframe);
 }
-  </script>
+</script>
+
 
 </body>
 </html>
