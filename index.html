@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Game Hub</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 40px;
+    }
+
+    /* Top-right settings button */
+    .topbar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 20px;
+    }
+    .topbar a {
+      color: #4da3ff;
+      font-size: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 42px;
+      letter-spacing: 1px;
+      margin-top: 40px;
+    }
+
+    /* Utopia-style search bar */
+    .search-wrapper {
+      text-align: center;
+      margin: 30px 0 50px 0;
+    }
+
+    .search-box {
+      width: 60%;
+      max-width: 600px;
+      padding: 14px 20px;
+      border-radius: 30px;
+      border: 1px solid #333;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      font-size: 18px;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .search-box:focus {
+      border-color: #4da3ff;
+      background: #151515;
+    }
+
+    .search-btn {
+      background: #4da3ff;
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+
+    .search-btn:hover {
+      background: #6bb6ff;
+    }
+
+    /* Search results viewer */
+    #searchFrame {
+      width: 100%;
+      height: 80vh;
+      border: none;
+      margin-top: 30px;
+      display: none;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Category headers */
+    h2 {
+      margin-top: 50px;
+      margin-bottom: 20px;
+      font-size: 28px;
+      border-left: 6px solid #4da3ff;
+      padding-left: 12px;
+    }
+
+    /* Game grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: 0.2s;
+      border: 1px solid #222;
+    }
+    .card:hover {
+      background: #242424;
+      transform: translateY(-4px);
+      border-color: #4da3ff;
+    }
+
+    a {
+      color: #4da3ff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Settings section */
+    #settings {
+      margin-top: 80px;
+      padding: 20px;
+      background: #111;
+      border-radius: 12px;
+      border: 1px solid #333;
+    }
+
+    .btn {
+      background: #4da3ff;
+      color: #000;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background: #6bb6ff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Settings button -->
+  <div class="topbar">
+    <a href="#settings">Settings ⚙️</a>
+  </div>
+
+  <h1>Game Hub</h1>
+
+  <!-- Utopia-style internal search -->
+  <div class="search-wrapper">
+    <input id="searchInput" class="search-box" type="text" placeholder="Search the web...">
+    <button class="search-btn" onclick="runSearch()">Search</button>
+  </div>
+
+  <iframe id="searchFrame"></iframe>
+
+  <!-- GAME SECTIONS -->
+  <h2>Platformers</h2>
+  <div class="grid">
+    <div class="card"><a href="Appel v1.html">Appel</a></div>
+    <div class="card"><a href="Crystal Seeker 3D platformer v1.8.html">Crystal Seeker</a></div>
+    <div class="card"><a href="Geometry Dash v1.html">Geometry Dash</a></div>
+  </div>
+
+  <h2>Minecraft‑Style</h2>
+  <div class="grid">
+    <div class="card"><a href="Eaglercraft_1.12.html">Eaglercraft 1.12</a></div>
+    <div class="card"><a href="Eaglercraft_1.8.8.html">Eaglercraft 1.8.8</a></div>
+  </div>
+
+  <h2>Retro Classics</h2>
+  <div class="grid">
+    <div class="card"><a href="Super Mario Kart.html">Super Mario Kart</a></div>
+    <div class="card"><a href="Super Smash Bros.html">Super Smash Bros</a></div>
+  </div>
+
+  <h2>3D & Simulation</h2>
+  <div class="grid">
+    <div class="card"><a href="Flight Simulator 3D v2.html">Flight Simulator 3D</a></div>
+  </div>
+
+  <h2>Action & Strategy</h2>
+  <div class="grid">
+    <div class="card"><a href="Brink of War.html">Brink of War</a></div>
+  </div>
+
+  <h2>Horror</h2>
+  <div class="grid">
+    <div class="card"><a href="fnaf/index.html">Five Nights at Freddy's</a></div>
+    <div class="card"><a href="Five Nights At Winstons/index.html">Five Nights At Winstons</a></div>
+  </div>
+
+  <h2>Folder Games</h2>
+  <div class="grid">
+    <div class="card"><a href="Burrito Bison/index.html">Burrito Bison</a></div>
+    <div class="card"><a href="Geometry Dash/index.html">Geometry Dash (Folder)</a></div>
+    <div class="card"><a href="gladihoppers/index.html">Gladihoppers</a></div>
+    <div class="card"><a href="Retro Bowl/index.html">Retro Bowl</a></div>
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settings">
+    <h2>Settings</h2>
+    <p>Launch the Game Hub inside about:blank for privacy mode.</p>
+    <button class="btn" onclick="launchBlank()">Open in about:blank</button>
+  </div>
+
+  <script>
+    function runSearch() {
+      const query = document.getElementById("searchInput").value;
+      const frame = document.getElementById("searchFrame");
+
+      if (query.trim() === "") return;
+
+      frame.style.display = "block";
+
+      // Utopia's actual search engine endpoint (Chromebook-safe)
+      frame.src = "https://utopiaunblocker.com/search?q=" + encodeURIComponent(query);
+    }
+
+    function launchBlank() {
+      const win = window.open("about:blank", "_blank");
+      win.document.write(`
+        <iframe src="${location.href}" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
+      `);
+      win.document.close();
+    }
+  </script>
+
+</body>
+</html>
