@@ -13,7 +13,7 @@
       padding: 0;
     }
 
-    /* Utopia-style top navigation bar */
+    /* NAVBAR */
     .navbar {
       width: 100%;
       height: 60px;
@@ -47,7 +47,7 @@
       color: #4da3ff;
     }
 
-    /* Game iframe */
+    /* GAME IFRAME */
     #gameFrame {
       width: 100%;
       height: calc(100vh - 60px);
@@ -56,7 +56,7 @@
       display: none;
     }
 
-    /* Page content wrapper */
+    /* CONTENT */
     .content {
       padding: 80px 40px;
     }
@@ -68,7 +68,7 @@
       letter-spacing: 1px;
     }
 
-    /* Search bar */
+    /* SEARCH */
     .search-wrapper {
       text-align: center;
       margin: 30px 0 50px 0;
@@ -84,12 +84,6 @@
       color: #f0f0f0;
       font-size: 18px;
       outline: none;
-      transition: 0.2s;
-    }
-
-    .search-box:focus {
-      border-color: #4da3ff;
-      background: #151515;
     }
 
     .search-btn {
@@ -104,10 +98,6 @@
       font-weight: bold;
     }
 
-    .search-btn:hover {
-      background: #6bb6ff;
-    }
-
     #searchFrame {
       width: 100%;
       height: 80vh;
@@ -116,6 +106,7 @@
       display: none;
     }
 
+    /* GAME GRID */
     h2 {
       margin-top: 50px;
       margin-bottom: 20px;
@@ -135,9 +126,9 @@
       padding: 20px;
       border-radius: 12px;
       text-align: center;
-      transition: 0.2s;
       border: 1px solid #222;
       cursor: pointer;
+      transition: 0.2s;
     }
 
     .card:hover {
@@ -146,13 +137,7 @@
       border-color: #4da3ff;
     }
 
-    .card a {
-      color: #4da3ff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: bold;
-    }
-
+    /* SETTINGS */
     #settings {
       margin-top: 80px;
       padding: 20px;
@@ -171,10 +156,6 @@
       cursor: pointer;
       border: none;
       margin-top: 10px;
-    }
-
-    .btn:hover {
-      background: #6bb6ff;
     }
   </style>
 </head>
@@ -263,10 +244,12 @@
 
   <!-- SCRIPT -->
   <script>
+    /* ABOUT:BLANK CLOAK */
     if (window.location.search.includes("cloak=1")) {
       document.body.style.display = "none";
     }
 
+    /* SEARCH */
     function runSearch() {
       const query = document.getElementById("searchInput").value;
       const frame = document.getElementById("searchFrame");
@@ -275,10 +258,11 @@
       frame.src = "https://utopiaunblocker.com/search?q=" + encodeURIComponent(query);
     }
 
+    /* ABOUT:BLANK LAUNCHER */
     function launchBlank() {
       const win = window.open("about:blank", "_blank");
       if (!win) {
-        alert("Popup blocked! Allow popups to use about:blank mode.");
+        alert("Popup blocked! Allow popups.");
         return;
       }
       const url = window.location.href + (window.location.search ? "&" : "?") + "cloak=1";
@@ -292,10 +276,11 @@
       win.document.body.appendChild(iframe);
     }
 
+    /* GAME LOADER */
     function loadGame(url) {
       const frame = document.getElementById("gameFrame");
       frame.style.display = "block";
-      frame.src = url + "?cloak=1";
+      frame.src = url;
       window.scrollTo(0, 0);
     }
 
