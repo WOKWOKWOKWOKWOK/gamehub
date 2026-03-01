@@ -233,12 +233,20 @@
     }
 
     function launchBlank() {
-      const win = window.open("about:blank", "_blank");
-      win.document.write(`
-        <iframe src="${location.href}" style="position:fixed;top:0;left:0;width:100%;height:100%;border:none;"></iframe>
-      `);
-      win.document.close();
-    }
+  const win = window.open("about:blank", "_blank");
+  const url = location.href;
+
+  win.document.body.style.margin = "0";
+  win.document.body.style.height = "100vh";
+
+  const iframe = win.document.createElement("iframe");
+  iframe.style.border = "none";
+  iframe.style.width = "100vw";
+  iframe.style.height = "100vh";
+  iframe.src = url + "?cloak=1";
+
+  win.document.body.appendChild(iframe);
+}
   </script>
 
 </body>
